@@ -64,6 +64,7 @@ const nombreCamada = 22405
 
 //console.log() mostrar mensaje en consola
 
+/*
 console.log('hola mundo')
 console.log('primer console.log')
 
@@ -72,3 +73,32 @@ console.log('primer console.log')
 
 alert('cuidado tenes un error')
 
+*/
+/*
+let nombre = prompt('Ingrese su nombre')
+let apellido = prompt('Ingrese su apellido')
+let lenguaje = prompt('Cual es tu lenguaje favorito?')
+
+
+
+console.log(nombre);
+console.log(apellido);
+console.log(lenguaje);
+
+console.log(nombre + ' ' + apellido + ' ' + lenguaje)
+
+console.log(`${nombre} ${apellido} ${lenguaje}`)
+*/
+
+let nro1 = Number(prompt('Ingresa tu numero'));
+let nro2 = Number(prompt('Ingresa tu numero')); 
+
+
+//convertir tipo de dato a otro tipo de dato es = parsear
+
+//Number() parseInt() parseFloat()
+
+console.log(nro1 + nro2);
+console.log(nro1 - nro2);
+console.log(nro1 / nro2);
+console.log(nro1 * nro2);
