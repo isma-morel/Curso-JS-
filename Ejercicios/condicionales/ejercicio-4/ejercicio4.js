@@ -13,7 +13,7 @@ if (nro1 > nro2) {
     console.log(`el numero ${nro2} es mayor y el numero ${nro1} es menor.`)
     alert(`el numero ${nro2} es mayor y el numero ${nro1} es menor.`)
 } else {
-        console.log(`Los numeros ${nro1} y ${nro2} son iguales.`)
-        alert(`Los numeros ${nro1} y ${nro2} son iguales.`)
+    console.log(`Los numeros ${nro1} y ${nro2} son iguales.`)
+    alert(`Los numeros ${nro1} y ${nro2} son iguales.`)
 }
 
