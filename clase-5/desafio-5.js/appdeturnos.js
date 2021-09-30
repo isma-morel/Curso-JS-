@@ -1,12 +1,6 @@
 //APP DE TURNOS
 
-/*
 
-
-Agregar min con la fecha actual!
-
-
-*/
 class Request {
     constructor(username, date) {
         this.username = username;
@@ -55,6 +49,13 @@ class UI {
 
 deshabilitar();
 
+/*
+
+
+Agregar min con la fecha actual!
+
+
+*/
 
 function deshabilitar() {
 
@@ -64,7 +65,7 @@ function deshabilitar() {
     const fechaActual = new Date();
     const year = fechaActual.getFullYear(); 
     const month = fechaActual.getMonth() + 1; //Porque los meses empiezan en 0
-    const day = fechaActual.getDate(); //Para no poder turnar el mismo dia
+    const day = fechaActual.getDate();
 
     let fechaDeshabilitar;
     if ([10,11,12].includes(month)){
@@ -78,7 +79,7 @@ function deshabilitar() {
 
 
 const submit = document.querySelector('#formulario');
-
+const requestList = []
 
 submit.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -90,13 +91,11 @@ submit.addEventListener('submit', (e) => {
     if(email === '' || date === '' ) {
         return ui.addAlert('Complete Fields Please', 'danger');
     }
+    requestList.push(req)
     ui.addRequest(req)
     ui.resetForm();
     ui.addAlert(`Has pedido un turno exitosamente para la fecha ${date}`, 'secondary')
-    console.log(date)
-    
-    
-    
+    console.log(requestList)
 })
 
 document.getElementById('request-list').addEventListener( 'click' ,(e) => {
