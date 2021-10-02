@@ -14,7 +14,7 @@ class UI {
         const element = document.createElement('div');
         element.innerHTML = `
             <div class="card text-center mb-4">
-                <div class="card-body">
+                <div class="card-body card-1">
                     <span>Username:</span> ${request.username}
                     <span>Request Date:</span> ${request.date}
                     <a href="#" class="btn-btn-danger" name="delete">Delete</a>
@@ -25,15 +25,15 @@ class UI {
     }
     addAlert(message, cssClass) {
         const div = document.createElement('div');
-        div.className = `alert alert-${cssClass}`;
+        div.className = `alert alerta alert-${cssClass}`;
         div.appendChild(document.createTextNode(message))
         //mostrando en dom
-        const container = document.querySelector('.container');
+        const container = document.querySelector('.seccion-turnos');
         const form = document.querySelector('.row')
         container.insertBefore(div, form);
         setTimeout(() => {
             document.querySelector('.alert').remove();
-        }, 1500)
+        }, 2000)
     }
     resetForm () {
         document.getElementById('formulario').reset();
@@ -61,18 +61,27 @@ function deshabilitar() {
 
     const fechaInput = document.querySelector('#fecha');
 
+    
 
     const fechaActual = new Date();
     const year = fechaActual.getFullYear(); 
     const month = fechaActual.getMonth() + 1; //Porque los meses empiezan en 0
-    const day = fechaActual.getDate();
-
+    const day = fechaActual.getDate() +1;
+    const number = [1,2,3,4,5,6,7,8,9]
     let fechaDeshabilitar;
-    if ([10,11,12].includes(month)){
-        fechaDeshabilitar = `${year}-${month}-${day}`;
-    }else{ // Añadimos el 0 para hacer el formato correcto
-        fechaDeshabilitar = `${year}-0${month}-${day}`
+    if (number.includes(month)){
+        fechaDeshabilitar = `${year}-0${month}-${day}`;
+        if (number.includes(day)) {
+            fechaDeshabilitar = `${year}-${month}-0${day}`;
+        }
+    }else{ 
+        if (number.includes(day)) {
+            fechaDeshabilitar = `${year}-${month}-0${day}`;
+        } else {
+            fechaDeshabilitar = `${year}-${month}-${day}`
+        }
     }
+    console.log(fechaDeshabilitar)
     fechaInput.min = fechaDeshabilitar;
 }
 
@@ -80,6 +89,7 @@ function deshabilitar() {
 
 const submit = document.querySelector('#formulario');
 const requestList = []
+const nav = document.querySelector('.a')
 
 submit.addEventListener('submit', (e) => {
     e.preventDefault();
