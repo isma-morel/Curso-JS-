@@ -89,20 +89,28 @@ function deshabilitar() {
 
 const submit = document.querySelector('#formulario');
 const requestList = []
+const newList = JSON.parse(localStorage.getItem("turno"))
 const nav = document.querySelector('.a')
+
+
 
 submit.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.querySelector('#email').value;
     const date = document.querySelector('#fecha').value;
     const ui = new UI();
-    const req = new Request(email, date);
-
+    let req = new Request(email, date);
     if(email === '' || date === '' ) {
         return ui.addAlert('Complete Fields Please', 'danger');
     }
-    requestList.push(req)
-    ui.addRequest(req)
+    ui.addRequest(req);
+    if (localStorage.getItem('turno') == null) {
+        requestList.push(req)
+        localStorage.setItem('turno', JSON.stringify(requestList))
+    } else {
+        newList.push(req)
+        localStorage.setItem('turno', JSON.stringify(newList))
+    }
     ui.resetForm();
     ui.addAlert(`Has pedido un turno exitosamente para la fecha ${date}`, 'secondary')
     console.log(requestList)
@@ -111,4 +119,12 @@ submit.addEventListener('submit', (e) => {
 document.getElementById('request-list').addEventListener( 'click' ,(e) => {
     const ui = new UI()
     ui.removeRequest(e.target)
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    const ui = new UI();
+    newList.forEach((e) => {
+        ui.addRequest(e)
+    })
+    
 })
