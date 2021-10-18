@@ -99,7 +99,7 @@ submit.addEventListener('submit', (e) => {
     const email = document.querySelector('#email').value;
     const date = document.querySelector('#fecha').value;
     const ui = new UI();
-    let req = new Request(email, date);
+    const req = new Request(email, date);
     if(email === '' || date === '' ) {
         return ui.addAlert('Complete Fields Please', 'danger');
     }
@@ -126,5 +126,4 @@ document.addEventListener('DOMContentLoaded', () => {
     newList.forEach((e) => {
         ui.addRequest(e)
     })
-    
 })
